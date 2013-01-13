@@ -1,0 +1,1277 @@
+  Chapter 1: INTRODUCTION
+
+1.1 Background
+The Credit Card Corp uses SAS enterprise miner, a commercial data mining tool in their credit card business applications, a part of CRMD, for tasks like fraud detection, risk minimization, anticipation of resource demands, seeking increase response rates for marketing campaigns and curbing customer attrition etc. Aware of growing industry and academia support for JDM and ODM, The Credit Card Corp wants us to build an in-house data mining capability to perform tasks mentioned above, for them, using JDM and/or ODM API’s.  
+
+The Credit Card Corp offers an online call center application to service millions of their credit card customers’ calls. The call center representatives enter call notes and save them in the database. The Credit Card Corp management team is interested in knowing the top reasons for calls in real time, especially whether there are new issues that generate a large call volume. A software application that can cluster the call notes periodically and show the report with cluster statistics is being developed. In this dissertation, we talk about an investigation into the proof of concept development of text clustering infrastructure using JDM and ODM.  
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ Chapter 2: DATA MINING CONCEPTS
+  
+2.1 What is Data Mining? 
+    Data mining is the practice of automatically searching large stores of data to discover patterns and trends that go beyond simple analysis. Data mining uses sophisticated mathematical algorithms to segment the data and evaluate the probability of future events. Data mining is also known as Knowledge Discovery in Data (KDD). 
+
+The key properties of data mining are: 
+Automatic discovery of patterns 
+Prediction of likely outcomes 
+Creation of actionable information 
+Focus on large data sets and databases 
+
+Data mining can answer questions that cannot be addressed through simple query and reporting techniques. 
+
+Automatic Discovery 
+Data mining is accomplished by building models. A model uses an algorithm to act on a set of data. The notion of automatic discovery refers to the execution of data mining models. 
+Data mining models can be used to mine the data on which they are built, but most types of models are generalizable to new data. The process of applying a model to new data is known as scoring. 
+Prediction 
+Many forms of data mining are predictive. For example, a model might predict income based on education and other demographic factors. Predictions have an associated probability (How likely is this prediction to be true?). Prediction probabilities are also known as confidence (How confident can I be of this prediction?). 
+Some forms of predictive data mining generate rules, which are conditions that imply a given outcome. For example, a rule might specify that a person who has a bachelor’s degree and lives in a certain neighborhood is likely to have an income greater than the regional average. Rules have an associated support (What percentage of the population satisfies the rule?). 
+
+
+
+Grouping 
+Other forms of data mining identify natural groupings in the data. For example, a model might identify the segment of the population that has an income within a specified range, that has a good driving record, and that leases a new car on a yearly basis. 
+Actionable Information 
+Data mining can derive actionable information from large volumes of data. For example, a town planner might use a model that predicts income based on demographics to develop a plan for low-income housing. A car leasing agency might a use model that identifies customer segments to design a promotion targeting high-value customers. 
+Data Mining and Statistics 
+There is a great deal of overlap between data mining and statistics. In fact most of the techniques used in data mining can be placed in a statistical framework. However, data mining techniques are not the same as traditional statistical techniques. 
+Traditional statistical methods, in general, require a great deal of user interaction in order to validate the correctness of a model. As a result, statistical methods can be difficult to automate. Moreover, statistical methods typically do not scale well to very large data sets. Statistical methods rely on testing hypotheses or finding correlations based on smaller, representative samples of a larger population.  
+
+What Can Data Mining Do and Not Do?  
+Data mining methods are suitable for large data sets and can be more readily automated. In fact, data mining algorithms often require large data sets for the creation of quality models. 
+Data Mining and OLAP 
+On-Line Analytical Processing (OLAP) can be defined as fast analysis of shared multidimensional data. OLAP and data mining are different but complementary activities. 
+OLAP supports activities such as data summarization, cost allocation, time series analysis, and what-if analysis. However, most OLAP systems do not have inductive inference capabilities beyond the support for time-series forecast. Inductive inference, the process of reaching a general conclusion from specific examples, is a characteristic of data mining. Inductive inference is also known as computational learning. 
+OLAP systems provide a multidimensional view of the data, including full support for hierarchies. This view of the data is a natural way to analyze businesses and organizations. Data mining, on the other hand, usually does not have a concept of dimensions and hierarchies. 
+Data mining and OLAP can be integrated in a number of ways. For example, data mining can be used to select the dimensions for a cube, create new values for a dimension, or create new measures for a cube. OLAP can be used to analyze data mining results at different levels of granularity. 
+Data Mining and Data Warehousing 
+Data can be mined whether it is stored in flat files, spreadsheets, database tables, or some other storage format. The important criterion for the data is not the storage format, but its applicability to the problem to be solved. 
+Oracle Data Mining requires that the data be presented as a case table in single-record case format. All the data for each record (case) must be contained within a row. Most typically, the case table is a view that presents the data in the required format for mining. 
+What Can Data Mining Do and Not Do? 
+Data mining is a powerful tool that can help you find patterns and relationships within your data. But data mining does not work by itself. It does not eliminate the need to know your business, to understand your data, or to understand analytical methods. Data mining discovers hidden information in your data, but it cannot tell you the value of the information to your organization.  You might already be aware of important patterns as a result of working with your data over time. Data mining can confirm or qualify such empirical observations in addition to finding new patterns that may not be immediately discernible through simple observation. 
+
+It is important to remember that the predictive relationships discovered through data mining are not necessarily causes of an action or behavior. For example, data mining might determine that males with incomes between $50,000 and $65,000 who subscribe to certain magazines are likely to buy a given product. You can use this information to help you develop a marketing strategy. However, you should not assume that the population identified through data mining will buy the product because they belong to this population. 
+Asking the Right Questions 
+Data mining does not automatically discover solutions without guidance. The patterns you find through data mining will be very different depending on how you formulate the problem. 
+To obtain meaningful results, you must learn how to ask the right questions. For example, rather than trying to learn how to "improve the response to a direct mail solicitation," you might try to find the characteristics of people who have responded to your solicitations in the past. 
+Understanding Your Data 
+To ensure meaningful data mining results, you must understand your data. Data mining algorithms are often sensitive to specific characteristics of the data: outliers (data values that are very different from the typical values in your database), irrelevant columns, columns that vary together (such as age and date of birth), data coding, and data that you choose to include or exclude. 
+Oracle Data Mining can automatically perform much of the data preparation required by the algorithm. But some of the data preparation is typically specific to the domain or the data mining problem. At any rate, you need to understand the data that was used to build the model in order to properly interpret the results when the model is applied. 
+
+2.1.1 The Data Mining Process 
+Figure 2.1 illustrates the phases, and the iterative nature, of a data mining project. The process flow shows that a data mining project does not stop when a particular solution is deployed. The results of data mining trigger new business questions, which in turn can be used to develop more focused models.  
+
+
+Figure 2.1: The Data Mining Process  
+ Problem Definition 
+This initial phase of a data mining project focuses on understanding the project objectives and requirements. Once you have specified the project from a business perspective, you can formulate it as a data mining problem and develop a preliminary implementation plan. 
+For example, your business problem might be: "How can I sell more of my product to customers?" You might translate this into a data mining problem such as: "Which customers are most likely to purchase the product?" A model that predicts who is most likely to purchase the product must be built on data that describes the customers who have purchased the product in the past. Before building the model, you must assemble the data that is likely to contain relationships between customers who have purchased the product and customers who have not purchased the product. Customer attributes might include age, number of children, years of residence, owners/renters, and so on. 
+2.1.1.1 Data Gathering and Preparation 
+The data understanding phase involves data collection and exploration. As you take a closer look at the data, you can determine how well it addresses the business problem. You might decide to remove some of the data or add additional data. This is also the time to identify data quality problems and to scan for patterns in the data. 
+The data preparation phase covers all the tasks involved in creating the case table you will use to build the model. Data preparation tasks are likely to be performed multiple times, and not in any prescribed order. Tasks include table, case, and attribute selection as well as data cleansing and transformation. For example, you might transform a DATE_OF_BIRTH column to AGE; you might insert the average income in cases where the INCOME column is null. 
+Additionally you might add new computed attributes in an effort to tease information closer to the surface of the data. For example, rather than using the purchase amount, you might create a new attribute: "Number of Times Amount Purchase Exceeds $500 in a 12 month time period." Customers who frequently make large purchases may also be related to customers who respond or don't respond to an offer.
+
+2.1.1.2 Model Building and Evaluation 
+In this phase, you select and apply various modeling techniques and calibrate the parameters to optimal values. If the algorithm requires data transformations, you will need to step back to the previous phase to implement them. 
+In preliminary model building, it often makes sense to work with a reduced set of data (fewer rows in the case table), since the final case table might contain thousands or millions of cases. At this stage of the project, it is time to evaluate how well the model satisfies the originally-stated business goal (phase 1). If the model is supposed to predict customers who are likely to purchase a product, does it sufficiently differentiate between the two classes? Is there sufficient lift? Are the trade-offs shown in the confusion matrix acceptable? Would the model be improved by adding text data? Should transactional data such as purchases (market-basket data) be included? Should costs associated with false positives or false negatives be incorporated into the model? Thoughtful data preparation can significantly improve the information that can be discovered through data mining. 
+
+2.1.1.3 Knowledge Deployment 
+Knowledge deployment is the use of data mining within a target environment. In the deployment phase, insight and actionable information can be derived from data. 
+Deployment can involve scoring (the application of models to new data), the extraction of model details (for example the rules of a decision tree), or the integration of data mining models within applications, data warehouse infrastructure, or query and reporting tools. 
+Because Oracle Data Mining builds and applies data mining models inside Oracle Database, the results are immediately available. BI reporting tools and dashboards can easily display the results of data mining. Additionally, Oracle Data Mining supports scoring in real time: Data can be mined and the results returned within a single database transaction. For example, a sales representative could run a model that predicts the likelihood of fraud within the context of an online sales transaction. 
+
+
+2.2 Java Data Mining
+
+The JDM specification addresses the need for a pure Java API to facil­itate development of data mining-enabled applications. Whereas the term “data mining” can be interpreted in different ways, we distinguish it from the querying of large databases or OLAP, which are largely deductive technologies. Query­ing and OLAP rely on users to formulate queries and design constructs which can then be manipulated and interrogated. Data mining, and the more fashionable term predictive ana­lytics, involves inductive technologies, that is, those that extract previously unknown knowledge from a potentially large volume of data. 
+
+Existing data mining APIs are proprietary. Using JDM, implementers of data mining applications can benefit from a single, standard API that will be understood by a wide variety of developers writing applications and components running on the Java™ 2 Plat­form. Similarly, data mining applications can be coded against a single API that is inde­pendent of the underlying data mining system. JDM targets for the J2EE™ and J2SE™. 
+
+JDM supports common data mining operations such as model build, test, and apply (score). JDM also supports the creation, persistence, access, and maintenance of metadata supporting mining activities. Also in JDM 2.0, the standard includes extensions for basic text mining, statistics, and transformations integrated with the mining process. A particu­lar implementation of this specification may not necessarily support all interfaces and ser­vices defined by JDM. However, JDM provides a mechanism for discovery of supported interfaces and capabilities. 
+
+Implementation details of JDM are delegated to each vendor. A vendor may decide to implement JDM as a native API of its data mining product. Others may opt to develop a driver/adapter that mediates between a core JDM layer and multiple vendor products. The JDM specification does not prescribe a particular implementation strategy, nor does it pre­scribe performance or accuracy of a given capability or algorithm. 
+
+2.2.1 Architectural components 
+JDM has three logical components that may be implemented as one executable or in a dis­tributed environment: 
+
+Application Programming Interface (API) - The API is the end-user-visible compo­nent of a JDM implementation that allows access to services provided by the data min­ing engine (DME). An application developer using JDM requires knowledge only of the API library, not of the other supporting components. 
+Data Mining Engine (DME) - A DME provides the infrastructure that offers a set of data mining services to its API clients. When implemented as a server of a client-server architecture, it is referred to as a data mining server (DMS), which is a specific instantiation of the more general Enterprise Information System (EIS) as specified in the Connector Architecture (JSR-16).
+Mining Object Repository (MOR) - The DME may use a MOR which serves to persist data mining objects. This repository can be based on, e.g., the CWM framework, spe­cifically leveraging the CWM Data Mining metamodel, or implemented using a ven­dor-proprietary representation. The MOR may exist in a file-based environment, or in a relational / object database. Section 3.7 discusses JDM persistence options.  
+
+
+2.3 Oracle Data Mining
+Oracle Data Mining provides comprehensive, state-of-the-art data mining functionality within Oracle Database. 
+
+
+2.3.1 Data Mining in the Database Kernel
+Oracle Data Mining is implemented in the Oracle Database kernel, and mining models are first class database objects. Oracle Data Mining processes use built-in features of Oracle Database to maximize scalability and make efficient use of system resources.
+
+2.3.1.1 Why Oracle Data Mining?
+Data mining within Oracle Database offers many advantages like Security, Ease of data refresh, Administrative tools for Data Preparation and Management, Need of no data movement, Advanced Analytics and Business Intelligence, Ability to use huge Oracle Technology Stack, Ability to perform pre- and post mining tasks within the same environment and API’s that provide direct access to ODM functionality within Oracle data base etc.
+
+
+2.3.2 Data Mining Functions
+A basic understanding of data mining functions and algorithms is required for using
+Oracle Data Mining. This section introduces the concept of data mining functions.
+
+Each data mining function specifies a class of problems that can be modeled and solved. Data mining functions fall generally into two categories: supervised and unsupervised. Notions of supervised and unsupervised learning are derived from the science of machine learning, which has been called a sub-area of artificial intelligence. 
+
+
+Supervised Data Mining
+Supervised learning is also known as directed learning. The learning process is directed by a previously known dependent attribute or target. Directed data mining attempts to explain the behavior of the target as a function of a set of independent attributes or predictors.
+
+Supervised learning generally results in predictive models. This is in contrast to unsupervised learning where the goal is pattern detection. The building of a supervised model involves training, a process whereby the software analyzes many cases where the target value is already known. In the training process, the model "learns" the logic for making the prediction. For example, a model that seeks to identify the customers who are likely to respond to a promotion must be trained by mining functions analyzing the characteristics of many customers who are known to have responded or not responded to a promotion in the past.
+
+Supervised Learning: Testing
+Separate data sets are required for building (training) and testing some predictive models. The build data (training data) and test data must have the same column structure. Typically, one large table or view is split into two data sets: one for building the model, and the other for testing the model. The process of applying the model to test data helps to determine whether the model, built on one chosen sample, is generalizable to other data. In particular, it helps to avoid the phenomenon of overfitting, which can occur when the logic of the model fits the build data too well and therefore has little predictive power. 
+
+Supervised Learning: Scoring
+Apply data, also called scoring data, is the actual population to which a model is applied. For example, you might build a model that identifies the characteristics of customers who frequently buy a certain product. To obtain a list of customers who shop at a certain store and are likely to buy a related product, you might apply the model to the customer data for that store. In this case, the store customer data is the scoring data. Most supervised learning can be applied to a population of interest. Scoring is the purpose of classification and regression, the principal supervised mining techniques. 
+
+Unsupervised Data Mining
+Unsupervised learning is non-directed. There is no distinction between dependent and independent attributes. There is no previously-known result to guide the algorithm in building the model.
+
+Unsupervised learning can be used for descriptive purposes. It can also be used to make predictions. 
+Unsupervised Learning: Scoring
+Although unsupervised data mining does not specify a target, most unsupervised learning can be applied to a population of interest. For example, clustering models use descriptive data mining techniques, but they can be applied to classify cases according to their cluster assignments. Anomaly detection, although unsupervised, is typically used to predict whether a data point is typical among a set of cases. 
+
+Data Preparation
+Data for mining must exist within a single table or view. The information for each case (record) must be stored in a separate row. 
+
+A unique capability of Oracle Data Mining is its support for dimensioned data (for example, star schemas) through nested table transformations. Additionally, Oracle Data Mining can mine unstructured data. Proper preparation of the data is a key factor in any data mining project. The data must be properly cleansed to eliminate inconsistencies and support the needs of the mining application. Additionally, most algorithms require some form of data transformation, such as binning or normalization. The data mining development process may require several data sets. One data set may needed for building (training) the model; a separate data set may be used for scoring. Classification models should also have a test data set. Each of these data sets must be prepared in exactly the same way.
+
+Supermodels
+ODM supports automatic and embedded data transformation, which can significantly reduce the time and effort involved in developing a data mining model. In Automatic Data Preparation (ADP) mode, the model itself transforms the build data according to the requirements of the algorithm. The transformation instructions are embedded in the model and reused whenever the model is applied. You can choose to add your own transformations to those performed automatically by Oracle Data Mining. These are embedded along with the automatic transformation instructions and reused with them whenever the model is applied. In this case, you only have to specify your transformations once — for the build data. The model itself will transform the data appropriately when it is applied. Mining models are known as supermodels, because they contain the instructions for their own data preparation. Non-Negative Matrix Factorization (NMF) Feature Extraction NMF generates new attributes using linear combinations of the original attributes. The coefficients of the linear combinations are non-negative. 
+
+During model apply, an NMF model maps the original data into the new set of attributes (features) discovered by the model. One Class Support Vector Machine (One- Class SVM) Anomaly Detection One-class SVM builds a profile of one class and when applied, flags cases that are somehow different from that profile. This allows for the detection of rare cases that are not necessarily related to each other. Orthogonal Partitioning Clustering (O-Cluster or OC) Clustering O-Cluster creates a hierarchical, grid-based clustering model. The algorithm creates clusters that define dense areas in the attribute space. A sensitivity parameter defines the baseline density level.
+
+
+2.4 Clustering and Oracle Data Mining
+
+Clustering analysis finds clusters of data objects that are similar in some sense to one another. The members of a cluster are more like each other than they are like members of other clusters. The goal of clustering analysis is to find high-quality clusters such that the inter-cluster similarity is low and the intra-cluster similarity is high. 
+
+Clustering, like classification, is used to segment the data. Unlike classification, clustering models segment data into groups that were not previously defined. Classification models segment data by assigning it to previously-defined classes, which are specified in a target. Clustering models do not use a target. Clustering is useful for exploring data. If there are many cases and no obvious groupings, clustering algorithms can be used to find natural groupings. Clustering can also serve as a useful data-preprocessing step to identify homogeneous groups on which to build supervised models.
+Clustering can also be used for anomaly detection. Once the data has been segmented into clusters, you might find that some cases do not fit well into any clusters. These cases are anomalies or outliers.
+
+2.4.1 Interpreting Clusters
+Since known classes are not used in clustering, the interpretation of clusters can present difficulties. How do you know if the clusters can reliably be used for business decision making?
+
+You can analyze clusters by examining information generated by the clustering algorithm. Oracle Data Mining generates the following information about each cluster:
+
+■ Position in the cluster hierarchy
+■ Rule for the position in the hierarchy
+■ Attribute histograms
+■ Cluster centroid
+
+As with other forms of data mining, the process of clustering may be iterative and may require the creation of several models. The removal of irrelevant attributes or the introduction of new attributes may improve the quality of the segments produced by a clustering model.
+
+
+
+
+
+2.4.2 How are Clusters Computed?
+There are several different approaches to the computation of clusters. Clustering algorithms may be characterized as:
+Hierarchical — Groups data objects into a hierarchy of clusters. The hierarchy can be formed top-down or bottom-up. Hierarchical methods rely on a distance function to measure the similarity between clusters.
+Partitioning — Partitions data objects into a given number of clusters. The clusters are formed in order to optimize an objective criterion such as distance.
+Locality-based — Groups neighboring data objects into clusters based on local conditions.
+Grid-based — Divides the input space into hyper-rectangular cells, discards the low-density cells, and then combines adjacent high-density cells to form clusters. 
+
+2.4.2.1 Cluster Rules
+Oracle Data Mining performs hierarchical clustering. The leaf clusters are the final clusters generated by the algorithm. Clusters higher up in the hierarchy are intermediate clusters.
+
+Rules describe the data in each cluster. A rule is a conditional statement that captures the logic used to split a parent cluster into child clusters. A rule describes the conditions for a case to be assigned with some probability to a cluster. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Chapter 3: TEXT CLUSTERING
+
+
+
+3.1 What is Text Clustering?
+
+Text Clustering is a specific task in text mining that refers to the process of deriving high-quality information from text and is used for unsupervised document organization, automatic topic extraction and fast information retrieval or filtering.
+
+3.2 How Text Clustering works?
+The example below provides a simplified, incomplete explanation of how text clustering works. The main idea is to find which documents have many words in common, and place the documents with the most words in common into the same groups. We can illustrate how this works by using a small collection of imaginary documents. 
+Pretend we have a collection of documents, labeled A through N, that contain (among others) the words shown in the table: 
+Doc 
+Planet
+Galaxy
+Nova 
+Film
+Role
+Hollywood 
+Diet
+Habitat
+Fur
+A
+2
+1
+1
+ 
+ 
+ 
+ 
+ 
+ 
+B
+1
+1
+3
+ 
+ 
+ 
+ 
+ 
+ 
+C
+2
+1
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+D
+1
+2
+1
+ 
+ 
+ 
+ 
+ 
+ 
+E
+ 
+ 
+ 
+1
+1
+1
+ 
+ 
+ 
+F
+ 
+ 
+ 
+3
+ 
+1
+ 
+ 
+ 
+G
+ 
+ 
+ 
+1
+5
+2
+ 
+ 
+ 
+H
+ 
+ 
+ 
+2
+1
+1
+ 
+ 
+ 
+I
+ 
+ 
+ 
+ 
+ 
+ 
+2
+3
+2
+J
+ 
+ 
+ 
+ 
+ 
+ 
+1
+1
+3
+K
+ 
+ 
+ 
+ 
+ 
+ 
+4
+1
+ 
+L
+ 
+ 
+ 
+ 
+ 
+ 
+1
+1
+1
+M
+2
+1
+1
+1
+2
+ 
+ 
+ 
+ 
+N
+ 
+ 
+ 
+2
+1
+1
+1
+ 
+1
+  		Table 3.1: Clustering Data 
+The numbers indicate how often each document contains each word. You can see by eyeballing the table that the documents are probably about one of three main themes: astronomy, movie stars, and animals. (In fact, documents with all of these themes come up when you query on the word star in an encyclopedia. This is related to a real example). 
+However, the last two documents are a bit strange: Document M contains words having to do with astronomy and movie stars (because the article might discuss film used to take photos of a planet, or the role of volcanic activity in forming craters on the surface), and Document N contains words having to do both with movie stars and animals (perhaps an interview with a movie star who diets and is active in an anti-fur campaign). 
+A clustering program tries to find the groups in the data. The one used by Scatter/Gather decides in advance that some number of clusters, say three, is desired. The program first chooses three documents that seem representative of the middle of each of the three clusters, say in this case, documents A, F, and J. These will act as the candidate centers of the clusters. The program then goes through and compares all the documents to A, F, and J. Each document is assigned to the cluster represented by whichever of A, F, and J it is most similar to. Similarity is based on how many words the documents have in common, and how strongly they are weighted. The topical terms of the clusters are chosen from words that represent the center of the cluster (although excluding words that are in the centers of any of the other clusters). 
+What this explanation didn't mention is how A, F and J were chosen. This can be done in many different ways. One way is to try all possible combinations of three documents, and see which ends up with the best overall clustering. (The best clustering is one in which the average difference of the documents to their cluster centers smallest.) Trying all combinations of three documents as the candidate centers can be very time-consuming, however, especially if there are many documents to cluster. Another possibility is to choose a small sample of documents, and find the centers just for those documents, and assume they represent the collection well. 
+Another strategy for choosing the representative documents for the cluster centers is to use a slower clustering algorithm only on a small sample of the documents. One of these is called average agglomerative clustering. It works by first comparing every pair of documents, and finding the pair of documents which are most similar to each other. This pair is placed into a new cluster, and now that cluster is represented by the average of the two documents (by the average weights of all the words in all the documents in the cluster). Then the process repeats. All the remaining documents are compared against each other and the clusters found so far. Again, the document or cluster that is found to be most similar to another document or cluster is merged with it. This process repeats until some target number of clusters is found. 
+
+
+Getting back to our example, as you might expect, the program has no problem placing documents A-D in one cluster, documents E-H in a second, and documents I-L in a third. The tricky question is: where do M and N go? They can easily well end up in either the second or third cluster. There are techniques we can use to deal with these cases, for example, allowing some documents to be placed in more than one cluster at the same time. But this examples shows why, in the words of Kaufmann and Rousseeuw, ``Cluster analysis is the art of finding groups in data.'' 
+
+3.2.1 Applications of Clustering in Text Mining
+
+Simple clustering. This refers to the creation of clusters of text features. For example: grouping the hits returned by a search engine.
+
+Taxonomy generation. This refers to the generation of hierarchical groupings. For example: a cluster that includes text about car manufacturers is the parent of child clusters that include text about car models.
+
+Topic extraction. This refers to the extraction of the most typical features of a group. For example: the most typical characteristics of documents in each document topic.
+
+
+3.2.2 Text Feature Extraction
+
+Feature extraction is central to text mining. Feature extraction is used for text  transformation at two different stages in the text mining process:
+
+1. A feature extraction process must be performed on text documents before they can be mined. This preprocessing step transforms text documents into small units of text called features or terms.
+
+2. The text transformation process generates large numbers (potentially many thousands) of text features from a text document. Oracle Data mining algorithms treat each feature as a separate attribute. Thus text data may present a huge number of attributes, many of which provide little significant information for training a supervised model or building an unsupervised model.
+
+Oracle Data Mining supports the Non-Negative Matrix Factorization (NMF) algorithm for feature extraction. You can create an NMF model to consolidate the text attributes derived from the case table and generate a reduced set of more meaningful attributes. The results can be far more effective for use in classification, clustering, or other types of data mining models. 
+
+
+
+3.3 Algorithms 
+This section gives a brief introduction to some important algorithms used in the project work viz., k-means, Non-Negative Matrix Factorization, and O-Cluster.                
+
+3.3.1 k-Means
+The k-Means algorithm is a distance-based clustering algorithm that partitions the data into a predetermined number of clusters provided there are enough distinct cases. Distance-based algorithms rely on distance metric (function) to measure the similarity between data points. The distance metric is either Euclidean, Cosine, or Fast Cosine distance. Data points are assigned to the nearest cluster according to the distance metric used. 
+
+Oracle Data Mining implements an enhanced version of the k-means algorithm with the 
+following features:
+
+The algorithm builds models in a hierarchical manner. The algorithm builds a model top down using binary splits and refinement of all nodes at the end. In this sense, the algorithm is similar to the bisecting k-means algorithm. The centroid of the inner nodes in the hierarchy is updated to reflect changes as the tree evolves. The whole tree is returned.
+
+The algorithm grows the tree one node at a time (unbalanced approach). Based on a user setting available in either of the programming interfaces, the node with the largest variance is split to increase the size of the tree until the desired number of clusters is reached. The maximum number of clusters is specified in the build setting for clustering models, CLUS_NUM_CLUSTERS. 
+
+The algorithm provides probabilistic scoring and assignment of data to clusters.
+
+The algorithm returns, for each cluster, a centroid (cluster prototype), histograms (one for each attribute), and a rule describing the hyperbox that encloses the majority of the data assigned to the cluster. The centroid reports the mode for categorical attributes or the mean and variance for numerical attributes.
+
+This approach to k-means avoids the need for building multiple k-means models and provides clustering results that are consistently superior to the traditional k-means.
+
+
+
+
+
+3.3.1.1 Data Preparation for k-Means
+Automatic Data Preparation performs outlier-sensitive normalization for k-Means. 
+
+When there are missing values in columns with simple data types (not nested), k-Means interprets them as missing at random. The algorithm replaces missing categorical values with the mode and missing numerical values with the mean. 
+
+When there are missing values in nested columns, k-Means interprets them as sparse. The algorithm replaces sparse numerical data with zeros and sparse categorical data with zero vectors.
+
+If you manage your own data preparation for k-Means, keep in mind that outliers with equi-width binning can prevent k-Means from creating clusters that are different in content. The clusters may have very similar centroids, histograms, and rules.
+
+
+3.3.2 Non-negative Matrix Factorization 
+Non-negative Matrix Factorization (NMF) is a state of the art feature extraction algorithm. NMF is useful when there are many attributes and the attributes are ambiguous or have weak predictability. By combining attributes, NMF can produce meaningful patterns, topics, or themes. 
+
+NMF is often useful in text mining. In a text document, the same word can occur in different places with different meanings. For example, "hike" can be applied to the outdoors or to interest rates. By combining attributes, NMF introduces context, which is essential for predictive power: 
+
+"hike" + "mountain" -> "outdoor sports"
+"hike" + "interest" -> "interest rates"
+
+
+3.3.2.1 How does it Work?
+NMF decomposes multivariate data by creating a user-defined number of features. Each feature is a linear combination of the original attribute set; the coefficients of these linear combinations are non-negative.
+
+NMF decomposes a data matrix V into the product of two lower rank matrices W and H so that V is approximately equal to W times H. NMF uses an iterative procedure to modify the initial values of W and H so that the product approaches V. The procedure terminates when the approximation error converges or the specified number of iterations is reached.
+
+During model apply, an NMF model maps the original data into the new set of attributes (features) discovered by the model.
+
+3.3.2.2 Data Preparation for NMF
+Automatic Data Preparation normalizes numerical attributes for NMF.
+
+When there are missing values in columns with simple data types (not nested), NMF interprets them as missing at random. The algorithm replaces missing categorical values with the mode and missing numerical values with the mean. 
+
+When there are missing values in nested columns, NMF interprets them as sparse. The algorithm replaces sparse numerical data with zeros and sparse categorical data with zero vectors.
+
+If you choose to manage your own data preparation, keep in mind that outliers can significantly impact NMF. Use a clipping transformation before binning or normalizing. NMF typically benefits from normalization. However, outliers with min-max normalization cause poor matrix factorization. To improve the matrix factorization, you need to decrease the error tolerance. This in turn leads to longer build times. NMF has been found to provide superior text retrieval when compared to SVD and other traditional decomposition methods. NMF takes as input a term-document matrix and generates a set of topics that represent weighted sets of co-occurring terms. The discovered topics form a basis that provides an efficient representation of the original documents. 
+
+
+
+3.3.3 O-Cluster
+
+3.3.3.1 How does it Work?
+The O-Cluster algorithm creates a hierarchical grid-based clustering model, that is, it creates axis-parallel (orthogonal) partitions in the input attribute space. The algorithm operates recursively. The resulting hierarchical structure represents an irregular grid that tessellates the attribute space into clusters. The resulting clusters define dense areas in the attribute space.
+
+The clusters are described by intervals along the attribute axes and the corresponding centroids and histograms. A parameter called sensitivity defines a baseline density level. Only areas with peak density above this baseline level can be identified as clusters. The k-means algorithm tessellates the space even when natural clusters may not exist. 
+
+For example, if there is a region of uniform density, k-Means tessellates it into n clusters (where n is specified by the user). O-Cluster separates areas of high density by placing cutting planes through areas of low density. O-Cluster needs multi-modal histograms (peaks and valleys). If an area has projections with uniform or monotonically changing density, O-Cluster does not partition it. 
+
+The clusters discovered by O-Cluster are used to generate a Bayesian probability model that is then used during scoring (model apply) for assigning data points to clusters. The generated probability model is a mixture model where the mixture components are represented by a product of independent normal distributions for numerical attributes and multinomial distributions for categorical attributes.
+
+
+3.3.3.1 Data Preparation for O-Cluster
+Automatic Data Preparation bins numerical attributes for O-Cluster. It uses a specialized form of equi-width binning that computes the number of bins per attribute automatically. Numerical columns with all nulls or a single value are removed. 
+
+O-Cluster handles missing values naturally as missing at random. The algorithm does not support nested tables and thus does not support sparse data.
+
+
+3.3.3.2 User-Specified Data Preparation for O-Cluster
+Keep the following in mind if you choose to prepare the data for O-Cluster.
+
+O-Cluster does not necessarily use all the input data when it builds a model. It reads the data in batches (the default batch size is 50000). It will only read another batch if it believes, based on statistical tests, that there may still exist clusters that it has not yet uncovered.
+Because O-Cluster may stop the model build before it reads all of the data, it is highly recommended that the data be randomized. 
+Binary attributes should be declared as categorical. O-Cluster maps categorical data to numerical values.
+The use of Oracle Data Mining's equi-width binning transformation with automated estimation of the required number of bins is highly recommended.
+The presence of outliers can significantly impact clustering algorithms. Use a clipping transformation before binning or normalizing. Outliers with equi-width. 
+
+Table 3.1 compares enhanced k-means and o-cluster algorithms.
+
+Feature
+Enhanced k-Means
+O-Cluster
+Clustering methodology
+Distance-based
+Grid-based
+Number of cases
+Handles data sets of any size
+More appropriate for data sets that have more than 500 cases. Handles large tables through active sampling
+Number of attributes
+More appropriate for data sets with a low number of attributes
+More appropriate for data sets with a high number of attributes
+Number of clusters
+User-specified
+Automatically determined
+Hierarchical clustering
+Yes
+Yes
+Probabilistic cluster assignment
+Yes
+Yes
+
+				Table 3.1 k-means versus O-Cluster
+
+Chapter 4:  SYSTEM ARCHITECTURE
+This chapter discusses an architecture that is applicable to development of text clustering infrastructure in Excalibur call center application.   
+
+Fig 4.1 depicts the clustering system architecture for this project work.  
+
+Call Centre Representatives
+ CRCC Desktops
+ 
+
+               
+                                                                                                                                     
+
+
+                        HTTP Traffic	      
+
+
+ 	 	
+                                                              
+
+Desktops for 
+The Credit Card Corp Management
+
+
+Fig 4.1: Clustering System Architecture
+
+4.1 CRCC Representative
+CRCC representatives service millions of credit card customers online. They access the Excalibur application through (internet) web application and store the call notes or comments from customers about service quality, inquiries, information related to credit card. For the scope of this project work, call center notes will be referred to be as comments henceforth and these comments made by customers for Affinity Card (a type of credit card) are referred to across the doc. 
+4.2 The Credit Card Corp Management
+The Credit Card Corp management refers to marketing manager and/or the management team responsible for java data mining initiative within CRMD. They have access to the data mining application console, by logging into which they can run reports for statistics about clusters of call notes. Graphic display of reports with histograms for Call notes in individual cluster, for instance, can be provided using oracle data miner software. 
+
+4.3 IBM HTTP Server
+IBM HTTP Server refers to IBM Websphere 6.0 and is the application server that hosts the applications used by The Credit Card Corp management and CRCC users.   
+
+4.4 Excalibur Application
+Excalibur is a web application built on Chordiant 5.7 Framework. Call center executives represent the users of this and enter call notes or comments that get saved in oracle database tables for the respective event.  
+
+
+4.5 Database
+Oracle 10g is used as the database. The persistence of data in tables in DB is achieved using Java XML Binding architecture and discussion on that is beyond the scope of this document. 
+
+
+4.6 Data Mining Infrastructure
+Data mining infrastructure used is mostly the oracle jdm implementation (OJDM) and can be divided into logical components.
+
+Fig 4.2 shows how Data Mining Infrastructure is split into different logical components.  
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+       		          Fig 4.2 Oracle JDM Implementation Architecture
+
+
+4.6.1 Oracle JDM Implementation Architecture 
+OJDM is a thin-Java wrapper that conforms to the JDM standard and enables Java applications to integrate in-database data mining features of Oracle Database. OJDM uses the database as the DME and communicates with the database using JDBC. OJDM supports the use of any type of Oracle JDBC driver supplied with the database. Figure 4.2 shows the architecture of OJDM. Any type of Java application that is compatible with J2SE 1.4.2 can use the OJDM API consisting of the JDM standard API and Oracle-specific JDM API extensions. OJDM maps the JDM named objects, such as mining model, task, settings objects, and test metrics, to database objects as shown in Table 16-1. The JDM mining model is mapped to the ODM mining model database object. Mining tasks are mapped to database scheduler jobs that can be executed either synchronously or asynchronously. Settings, cost matrix, and test metrics objects are mapped to database tables. By mapping JDM objects to database objects, OJDM requires no additional installation steps, such as additional schemas or server-side libraries. In addition, the database administrator (DBA) tasks for maintenance, such as backup and recovery, import/export of models, and the migration of JDM objects during software upgrade, are greatly simplified.
+
+Chapter 5:SYSTEM DESIGN & DEVELOPMENT
+
+
+This chapter discusses system design and development for text clustering application within Excalibur environment. Essentially, the major task is to build Text Clustering Infrastructure which involves building clustering model using both JDM and ODM API’s. And, the other task is to build an admin console for The Credit Card Corp management to login and run reports for cluster analysis, and to build an interface for existing Excalibur environment such that it connects both admin console and Clustering Infrastructure developed.
+
+
+5.1 Design Considerations
+  
+Below decisions were taken after reviewing the existing environment and scope of the application. 
+
+Technologies/Tools chosen:  JSP, Servlet, Java, JDK 1.5, XML, JDM 2.0, ODM
+Database/Tools: Oracle 10g, ODMiner, RAD 7.0, IBM Websphere 6.0  
+     
+
+5.2 Building Text Clustering Infrastructure 
+
+Text clustering infrastructure for our application is split into three parts:
+1.  Infrastructure related to ODM and JDM API’s
+2.  Infrastructure related to Excalibur application
+3.  Putting it all together to build our TextClusteringDemo class
+
+Before we move to building text infrastructure, the knowledge of JDM API’s related to clustering is essential to understand the clustering model that we’ve built for our project prototype. Some information on these API’s is below.
+
+
+5.2.1 Clustering using JDM Classes
+The package javax.datamining.clustering contains interfaces for representing a clustering model, for algorithm settings associated with clustering, and for specifying the similarity matrix associated with clustering. In this section, we briefly look at the key interfaces associated with clustering and look at code for creating a cluster using the JDM interfaces. 
+
+
+
+
+5.2.1.1 Key JDM clustering-related classes
+As shown in Figure 5.2, the results from a clustering run are represented by a ClusteringModel, which extends the Model interface. A ClusteringModel consists of a number of Cluster instances, which represent the metadata associated with a cluster.
+
+The Cluster interface has methods to return parent and children cluster instances (as with hierarchical clustering), statistics about the data associated with the cluster, rules associated with the cluster, and so on.
+
+
+
+
+Figure 5.1 ClusteringModel consists of a set of clusters obtained by analyzing the data.
+
+
+
+
+
+Figure 5.2: Some of the classes associated with clustering algorithm settings and clustering settings
+
+For building a clustering model, there are two types of settings, as shown in Figure 5.2. First are generic settings associated with the clustering process and represented by an instance of ClusteringSettings. Second are settings that are associated with a specific clustering algorithm. An example of such a setting is the KMeansSettings interface, which allows advanced users to specify the details of the k-means clustering algorithm.
+The interface BuildSettings has a method setAlgorithmSettings() for setting algorithm-specific settings. Let’s walk through some sample code that will make executing the clustering process through the JDM APIs clearer.
+5.2.1.2 Clustering settings using the JDM APIs
+In this section, we go through sample code to illustrate the clustering process using the JDM APIs. Major steps are:
+
+1 Create the clustering settings object.
+2 Create the clustering task.
+3 Execute the clustering task.
+4 Retrieve the clustering model.
+
+Listing below shows the code associated with the example and the settings process.
+
+
+package demo.clustering;
+
+import java.util.Collection;
+import javax.datamining.*;
+import javax.datamining.algorithm.kmeans.ClusteringDistanceFunction;
+import javax.datamining.algorithm.kmeans.KMeansSettings;
+import javax.datamining.algorithm.kmeans.KMeansSettingsFactory;
+import javax.datamining.clustering.*;
+import javax.datamining.resource.Connection;
+import javax.datamining.task.*;
+
+public class TextClusteringDemo {
+
+public void cluster(Connection connection ) throws JDMException {
+createClusteringSettings(connection);
+createClusteringTask(connection);
+executeClusteringTask(connection);
+retrieveClusteringModel(connection);
+}
+
+private void createClusteringSettings(Connection connection)
+throws JDMException {
+ClusteringSettingsFactory clusSettingsFactory =
+(ClusteringSettingsFactory)
+connection.getFactory(
+"javax.datamining.clustering.ClusteringSettingsFactory");
+ClusteringSettings clusteringSettings =
+clusSettingsFactory.create();
+clusteringSettings.setMaxNumberOfClusters(100);
+clusteringSettings.setMinClusterCaseCount(10);
+ClusteringAlgorithmSettings algorithmSettings =
+createKMeansClusteringSettings(connection);
+clusteringSettings.setAlgorithmSettings(algorithmSettings);
+connection.saveObject("clusteringSettings",
+clusteringSettings, false);
+}
+
+private ClusteringAlgorithmSettings createKMeansClusteringSettings(
+Connection connection) throws JDMException {
+KMeansSettingsFactory kmeansSettingsFactory =
+(KMeansSettingsFactory)connection.getFactory(
+"javax.datamining.algorithm.kmeans.KMeansSettingsFactory");
+KMeansSettings kmeansSettings =
+kmeansSettingsFactory.create();
+kmeansSettings.setDistanceFunction(
+ClusteringDistanceFunction.euclidean);
+kmeansSettings.setMaxNumberOfIterations(100);
+kmeansSettings.setMinErrorTolerance(0.001);
+return kmeansSettings;
+}
+The example first creates an instance of ClusteringSettings and sets attributes associated with the clustering process. For this, it sets the maximum and the minimum number of clusters to be created:
+
+
+clusteringSettings.setMaxNumberOfClusters(100);
+clusteringSettings.setMinClusterCaseCount(10);
+
+Next, an instance of KMeansSettings is created to specify settings specific to the kmeans algorithm. Here, the distance function is set to be Euclidean. The maximum number of iterations and the minimum error tolerance are also specified:
+
+kmeansSettings.setDistanceFunction(ClusteringDistanceFunction.euclidean);
+kmeansSettings.setMaxNumberOfIterations(100);
+kmeansSettings.setMinErrorTolerance(0.001);
+
+The algorithm settings are set in the ClusteringSettings instance:
+
+clusteringSettings.setAlgorithmSettings(algorithmSettings);
+
+Next, let’s look at creating the clustering task.
+
+
+5.2.1.3 Creating the clustering task using the JDM APIs
+To create an instance of the BuildTask for clustering we use the BuildTaskFactory as shown in Listing below.
+
+private void createClusteringTask(Connection connection) throws
+JDMException {
+BuildTaskFactory buildTaskFactory = (BuildTaskFactory)
+connection.getFactory("javax.datamining.task.BuildTaskFactory");
+BuildTask buildTask =
+buildTaskFactory.create("buildDataPhysicalDataSet",
+"clusteringSettings", "clusteringModel");
+connection.saveObject("clusteringBuildTask", buildTask, false);
+}
+
+The BuildTaskFactory creates an instance of the BuildTask. The create method to create a BuildTask needs the name of the dataset to be used, the name of the settings object, and the name of the model that is to be created. In our example, we will use the dataset “buildDataPhysicalDataSet”, use the setting specified in the object “clusteringSettings”, and the model that will be created from this run will be stored using the name "clusteringModel”.
+
+
+
+5.2.1.4 Executing the clustering task using the JDM APIs
+To execute a build task, we use execute () method on the Connection object as shown in below listing:
+
+private void executeClusteringTask(Connection connection)
+throws JDMException {
+ExecutionHandle executionHandle = connection.execute(
+"clusteringBuildTask");
+int timeoutInSeconds = 100;
+ExecutionStatus executionStatus =
+executionHandle.waitForCompletion(timeoutInSeconds);
+executionStatus = executionHandle.getLatestStatus();
+if (ExecutionState.success.equals(executionStatus.getState())) {
+//successful state
+}
+}
+
+The following code:
+ExecutionStatus executionStatus =
+executionHandle.waitForCompletion(timeoutInSeconds);
+
+waits for the clustering task to complete and specifies a timeout of 100 seconds. Once the task completes, it looks at execution status to see whether the task was successful. Next, let’s look at how we can retrieve the clustering model that has been created. 
+
+
+5.2.1.5 Retrieving the clustering model using the JDM APIs
+Listing below shows the code associated with retrieving a ClusteringModel using the name of the model and a Connection instance.
+
+private void retrieveClusteringModel(Connection connection)
+throws JDMException {
+ClusteringModel clusteringModel = (ClusteringModel)
+connection.retrieveObject("clusteringModel",
+NamedObject.model);
+Collection<Cluster> clusters = clusteringModel.getClusters();
+for (Cluster cluster: clusters) {
+System.out.println(cluster.getClusterId() + " " +
+cluster.getName());
+}
+}
+}
+
+Once a ClusteringModel is retrieved, we can get the set of Cluster instances and display information related to each of the clusters.
+
+In this section, we’ve looked at the key interfaces associated with clustering and the JDM APIs. As you must have noticed from this chapter, using the JDM APIs to apply clustering is fairly straightforward. We’ve looked at some sample code associated with creating clustering settings, creating and executing a clustering task, and retrieving the clustering model.
+
+
+
+
+
+
+
+
+
+
+
+5.2.2 Oracle Data Mining Infrastructure 
+
+This section presents an overview of the Oracle Data Mining Java API. The Java API is 
+based on JDM, the industry-standard Java API for data mining. 
+
+This section describes the following topics:
+The Java Environment
+Connecting to the Data Mining Engine
+Sample Data
+
+
+5.2.2.1 The Java Environment
+The Oracle Data Mining Java API requires Oracle Database 11g Release 1 (11.1) and
+J2SETM1.5. It is backward compatible and can be used with Oracle Database 10.2.
+
+To use the Oracle Data Mining Java API, include the following libraries in your
+Application CLASSPATH:
+
+$ORACLE_HOME/rdbms/jlib/jdm.jar
+$ORACLE_HOME/rdbms/jlib/ojdm_api.jar
+$ORACLE_HOME/rdbms/jlib/xdb.jar
+$ORACLE_HOME/jdbc/lib/ojdbc5.jar
+$ORACLE_HOME//oc4j/j2ee/home/lib/connector.jar
+$ORACLE_HOME/jlib/orai18n.jar
+$ORACLE_HOME/jlib/orai18n-mapping.jar
+$ORACLE_HOME/lib/xmlparserv2.jar
+
+Note: The Java API is layered on the PL/SQL and SQL language interfaces to Oracle Data Mining. All the SQL-based functionality described in this manual is also implemented in the Java API. However, the Java API supports several features not implemented in SQL, such as asynchronous execution of mining tasks and text transformation.
+
+
+5.2.2.2 Connecting to the Data Mining Engine
+The Data Mining Engine (DME) is the infrastructure that offers a set of data mining services to its JDM clients. The Oracle Database provides the in-database data mining functionality for JDM through the core Oracle Data Mining option. So in the rest of this document the Oracle Database is referred to as the DME.
+
+To access data mining functionality in the database, a DME Connection needs to be created. To connect to the DME, OJDM supports following different options.
+
+
+
+5.2.2.2.1 Connection Factory
+The Connection factory is used to create a DME connection. The JDM standard defines ConnectionFactory as a Java interface to provide a vendor neutral approach to create a DME Connection. In this approach, the application infrastructure needs to register the instance of ConnectionFactory in a JNDI server. Applications can lookup for ConnectionFactory in the JNDI server to instantiate a Connection using this factory. OJDM provides oracle.dmt.jdm.resource.OraConnectionFactory class, which can either be instantiated and accessed to create the connection or can be registered in JNDI server. Following code illustrates these two approaches to create a connection factory.
+
+5.2.2.2.2 Connect Using JDBC
+This option is useful when the applications want to control the JDBC Connections outside the OJDM and allow the OraConnectionFactory to use the specified OracleDataSource to create the database connection. This approach gives applications the ability to use the implicit connection caching features as required. By default, OJDM doesn't enable the implicit connection caching. 
+
+5.2.2.2.3 Connect Using ConnectionSpec
+This option is useful when the application doesn't want to pre-create the JDBC Connection and allow OJDM to maintain the JDBC Connection. Here the user needs to create an empty ConnectionSpec instance using getConnectionSpec () method in the oracle.dmt.jdm.resource.OraConnectionFactory class and create a DME Connection using the connection spec. 
+
+5.2.2.2.4 Features of a DME Connection
+In the Oracle Data Mining Java API, the DME Connection is the primary factory object. The Connection instantiates the object factories using the getFactory method.The Connection object provides named object lookup, persistence, and task execution features.
+
+
+Execute Mining Tasks
+The Connection object provides an execute method, which can execute mining tasks either asynchronously or synchronously. The DME uses the database Scheduler to execute mining tasks, which are stored in the user's schema as Scheduler jobs. 
+
+
+Retrieve DME Capabilities and Metadata
+The Connection interface provides a ConnectionMetaData and supportsCapability retrieval methods. This feature is useful for applications to know more about the DME at runtime. The following methods are used for retrieving this information from the connection. 
+
+Retrieve Version Information
+The ConnectionMetaData object provides methods for retrieving JDM standard version information and Oracle version information.
+5.2.2.3 Sample Data
+To ensure the confidentiality of the client data, the actual data used in the implementation of this project is not referred to in this document. Instead, the sample data that ships with oracle data mining installation has been used. The Sales History (SH) schema has been used. 
+
+The scripts to create tables and views are executed from within java program for the sake of printing out the demo.
+
+
+5.3 Building Excalibur Infrastructure 
+
+This involves building primarily two components. One, web application to provide a admin console for The Credit Card Corp management and another, an interface to talk to Excalibur application that in turn talks to oracle database and clustering infrastructure.
+
+The admin console enables user with appropriate credentials to login, specify the characteristics of the report for the clustering model whose analysis is he interested in doing, and launch report. On successful run, the cluster statistics for the specified algorithm and histogram for displayed. We’ll talk more about this in the next chapter. 
+
+See Chapter 6 for mock-up of admin console built.
+
+
+The interface that connects both admin console page and Excalibur and clustering code is built using a Servlet that has the code to authenticate user and route the control to mining code. 
+
+
+
+5.4 Putting Excalibur and Clustering Infrastructure together
+In summary, the application is deployed as a J2EE EAR file. The sections 5.2.1 and 5.2.2 show the flow and example of how clustering is achieved using JDM and ODM. 
+
+During the preprocessing step, all the attributes are normalized to a scale of [0, 1]. An attribute like COMMENTS contains unstructured data. The “raw” unstructured data, if used, in clustering process, will give a less accurate prediction or statistics. Hence, NMF algorithm is applied on the values for COMMENTS column to extract only meaningful features and each feature will then be treated as an attribute by clustering algorithm. After this, k-means clustering algorithm is applied with settings such as number of clusters, distance function used to calculate Centroid (Euclidean Distance function has been used)
+The clusters are calculated using hierarchical clustering mechanism. So, leaf clusters are shown with statistics for each attribute. 
+
+As far as clustering COMMENTS or call center notes is concerned, the statistics will show the Binning ID, Frequency of occurrence of that note and the probability for the same referred to as Scale.
+
+The clustering model this generated could be fed to Oracle Data Miner tool that can show the Histogram for the COMMENTS values and will give patterns about customer feedback and areas of service improvement, sales distribution, prediction about spending etc such that management could accordingly strategize their business decisions.
+
+See Chapter 6 for screenshots of some sample runs. For detailed understanding of k-means and NMF, please see Algorithms section in Chapter 3 above.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Chapter 6: RESULTS
+
+This chapter mentions the intermediary results and final output during the data mining process carried out in the project work. Screenshots with appropriate labels below can be used to visualize the same. 
+
+The user logs in on the admin console (See Fig 6.1) and chooses the application (in our case, it’s the call centre application in Excalibur), chooses the algorithm (in our case, it’s the k-means) and clicks on Demo Text Clusters. On successful operation, the cluster statistics are shown as in Fig 6.2, 6.3, 6.4. Note that oracle sample data has been used for and real data hasn’t been used, for purposes of confidentiality.
+
+The Scenario:
+The comments made by customers regarding the service and utility of credit card product called AFFINITY CARD, are stored in database, when call center representatives enter the notes in Excalibur application UI. As a sample, we assume there’re 44 non-null comments made in database. There are about 4200 comments made in total. Since COMMENTS contains unstructured data, NMF algorithm extracts features and each individual feature, which is nature of comment, for instance - HAPPY, COMPLAINT, TEXAS, HASSLE etc, will be an attribute (See NMF description in Chapter 3). See Fig 6.7 to view features extracted as shown in Oracle Data Miner tool. After clustering, the frequency of occurrence of each comment is each of the clusters is printed to the console (See Fig 6.3, 6.4). See Fig 6.5 and 6.6 to see db query results for COMMENTS. 
+
+Based on nature of comment, the prediction on the customer service quality and product acceptability by customers for usage of AFINITY CARD is made by looking at the statistics and histogram of COMMENTS in Oracle Data Miner. For simplicity sake, the histogram shown in Fig 6.8 is for usage of AFFINITY CARD by customers with different income levels and professions.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fig 6.1 shows the admin console developed for management login (web application):
+
+Fig 6.1 Clustering Admin Console
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fig 6.2 shows statistics for cluster id 2
+
+                     Fig 6.2: Statistics for Cluster Id 2 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fig 6.3 shows statistics for attribute: COMMENTS for Cluster ID 2 
+
+Fig 6.3: Statistics for attribute: COMMENTS for Cluster ID 2 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fig 6.4 shows statistics for COMMENS attribute for cluster id 4
+
+Fig 6.4: Statistics for attribute: COMMENTS for Cluster ID 4 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fig 6.5 shows the results after querying the no. of unique comments stored in database
+
+		Fig 6.5: Count Query results on COMMENTS in DB
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fig 6.6 shows the results after querying for unique COMMENTS in db 
+
+			Fig 6.6 Unique COMMENTS in DB 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fig 6.7 shows Features (to be used as attributes) extracted for COMMENTS as viewed in Oracle Data Miner tool.  
+
+		Fig 6.7: Features extracted for COMMENTS column
+
+
+
+
+
+
+
+
+
+
+
+Fig 6.8 shows the Histogram for AFFINITY_CARD reflecting the user population in % that use AFFINITY CARD based on their income levels.
+
+			Fig 6.8: AFFINITY CARD Histogram	
+
+
+
+
+
+
+
+
+
+
+SUMMARY
+
+An effort has been made to investigate the proof-of-concept work for building text clustering infrastructure in a call center application using data mining concepts. The efforts involved include learning data mining concepts, JDM and ODM API’s and writing code to customize them to proprietary technology stack. Since this work is being done for our client, The Credit Card Corp whose policy mentions about ensuring the confidentiality of their data, the actual text clustering process and real-time data used are masked. And, the clustering process and the test data referred to, in this dissertation report are mostly generic. This work has been appreciated by us and The Credit Card Corp. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DIRECTIONS FOR FUTURE WORK
+
+Much can be done to cluster call notes, apart from listing the frequency of occurrence of call notes (nested attributes), their probability of occurrence, and from using Oracle Data Miner using O-cluster or some other proprietary algorithm. Although this clustering proof-of-concept work has been successful, the JDM and ODM stack can be used to build models like Association, Classification, and Credit Scoring etc.  
+
+In the upcoming releases, this project aims at building a full-fledged data mining capability for The Credit Card Corp across many applications of theirs, utilizing modeling mechanism for many more tasks like fraud detection, credit scoring, customer segmentation etc, along with call center clustering. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GLOSSARY
+
+Active learning
+A feature of support vector machine algorithm that provides a way to deal with large training data sets.
+
+ADP
+See automatic data transformation
+
+Aggregation
+The process of consolidating data values into a smaller number of values. For example sales data could be collected on a daily basis and then be totaled to the week level.
+
+Algorithm
+A sequence of steps for solving a problem.
+
+Algorithm settings
+The settings that specify algorithm-specific behavior for model building.
+
+Anomaly detection
+The detection of outliers or atypical cases. 
+
+Apply
+The data that scores data, that is, uses the model with new data to predict results.
+
+Apply settings
+In the Java API, an object used to specify the kind of output desired from applying a model to data. This output may include predicted values, associated probabilities, key value and other data.
+
+Association
+A machine learning technique that identifies relationships among items.
+
+Attribute
+An attribute is a predictor in a predictive model or an item of descriptive information in a descriptive model. Data attributes are used to build a model. 
+
+Binning
+Binning, also called as Discretization, is a technique for reducing the cardinality of continuous and discrete data. 
+
+Case
+All the data collected about a particular transaction or related set of values. In the simplest case, it corresponds to a row in table.
+
+Categorical
+Data type that has type - VARCHAR2 or CHAR2.
+
+Feature selection
+Selecting the most relevant attributes
+
+Feature extraction
+Combining attributes into a new reduced set of features.
+
+Normalization
+It’s a technique for reducing the range of numerical data. Most normalization methods map the range of single variable to another range often(0,1).
+
+Numerical
+Data type that has DECIMAL or INTEGER type in DB.
+
+Unstructured
+Data type that is not categorical and also not numerical. Examples include image files, audio, video, call center notes
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+REFERENCES
+
+1. Campos, M.M., Milenova, B.L., "O-Cluster: Scalable Clustering of Large High
+Dimensional Data Sets", Oracle Data Mining Technologies, 10 Van De Graaff
+Drive, Burlington, MA 01803.
+
+2. Oracle Data Miner -  http://www.oracle.com/technology/products/bi/odm/
+
+3. JSR Specifications - http://jcp.org/en/jsr/detail?id_247
+
+4. Introduction to Data Mining by Vipin Kumar, Michael Steinbach, Pang-ning Tan, Addison Wesley, 2006. 
+
+5. Java Data Mining: Standard, Theory and Practice: A Practical Guide for Architecture, Design and Implementation by Mark Hornick, Erik Marcade, and Sunil Venkayala, Morgan Kauffman Publishers, 2007
+
+6. Collective Intelligence in Action by Satnam Alag, Manning Publications, 2007 
+7. Using text mining to understand the call center customers’ claims http://library.witpress.com/pages/PaperInfo.asp?PaperID=16715 by G. M. Caputo, V. M. Bastos & N. F. F. Ebecken.
+8. Oracle Database 11g / Data Mining API Documentation
+
+9.  KD Nuggets  www.kdnuggets.com
+
+10. ACM www.acm.org
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
